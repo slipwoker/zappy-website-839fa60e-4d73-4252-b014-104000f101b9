@@ -32,7 +32,10 @@ Information about WCAG compliance and accessibility features.
 
 ## How to Contact Us
 
-- (No contact details configured yet.)
+- Email: danasher123456@gmail.com
+- Phone: 0503232341
+- Phone (tel): tel:0503232341
+- Address: ישראל וישנגרד 7 , בת ים, ישראל, ישראל
 
 ### Contact form
 - URL: https://example.com
@@ -44,7 +47,7 @@ Information about WCAG compliance and accessibility features.
   - `email` (email, required)
   - `phone` (tel, required)
   - `message` (textarea, required)
-  - `privacy_consent` (checkbox)
+  - `privacy_consent` (checkbox, required)
 
 ---
 
