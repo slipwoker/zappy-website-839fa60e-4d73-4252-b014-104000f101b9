@@ -5173,6 +5173,31 @@ div[id*="mic-access-tool-box"] button[class*="reset"] * {
 ._access-icon {
   display: flex !important;
 }
+
+@media (max-width: 768px) {
+.navbar .phone-header-btn {
+  width: auto !important;
+  height: auto !important;
+  min-width: 100px !important;
+  border-radius: 24px !important;
+  background: var(--primary) !important;
+  color: #fff !important;
+  padding: 8px 14px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  gap: 6px !important;
+  left: 12px !important;
+  right: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
+}
+
+.navbar .phone-header-btn .call-text {
+  display: inline !important;
+}
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
