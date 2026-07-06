@@ -1,0 +1,71 @@
+# צמיגי בועז בעמ — Generative Engine Optimization Map
+
+> A mobile tire repair service that operates on the road, providing on-site puncture repair and tire assistance to drivers who experience flat tires while driving. The service is built around speed, reliability, and convenience — coming directly to the stranded driver wherever they are on the road.
+
+---
+
+## Pages
+
+### בית
+https://-839fa60e.zappy5.app
+נתקעתם עם פנצ&#39;ר באמצע הדרך? צמיגי בועז בעמ מגיעים אליכם עם שירות תיקון צמיגים נייד, מהיר ואמין בכל שעה. חייגו עכשיו ונחזיר אתכם לנסוע בבטחה!
+
+### תודה - צמיגי בועז בעמ
+https://-839fa60e.zappy5.app/thank-you
+צמיגי בועז בעמ - תודה - צמיגי בועז בעמ
+
+## Legal & Policy
+
+### Privacy Policy
+https://-839fa60e.zappy5.app/privacy
+Information about how user data is collected, stored, and protected.
+
+### Terms & Conditions
+https://-839fa60e.zappy5.app/terms
+Legal terms describing service usage, rights, and policies.
+
+### Accessibility Statement
+https://-839fa60e.zappy5.app/accessibility
+Information about WCAG compliance and accessibility features.
+
+---
+
+## How to Contact Us
+
+- (No contact details configured yet.)
+
+### Contact form
+- URL: https://-839fa60e.zappy5.app
+- Endpoint: https://-839fa60e.zappy5.app/api/email/contact-form
+- Method: POST
+- Content-Type: application/json
+- Fields:
+  - `name` (text, required)
+  - `email` (email, required)
+  - `phone` (tel, required)
+  - `message` (textarea, required)
+  - `privacy_consent` (checkbox)
+
+---
+
+# Business Context (for LLM understanding)
+
+## About צמיגי בועז בעמ
+A mobile tire repair service that operates on the road, providing on-site puncture repair and tire assistance to drivers who experience flat tires while driving. The service is built around speed, reliability, and convenience — coming directly to the stranded driver wherever they are on the road.
+
+## Target Audience
+- נהגים שנתקלים בפנצ'ר בכביש
+- נהגים בכבישים מהירים
+- אנשי מקצוע נוסעים
+- חברי מועדוני שירותי דרך
+
+## Industry
+Mobile Tire Repair Service
+
+---
+
+# Machine-readable feeds
+
+- Sitemap (XML): https://-839fa60e.zappy5.app/sitemap.xml
+- Robots: https://-839fa60e.zappy5.app/robots.txt
+- Flattened page text (for LLMs): https://-839fa60e.zappy5.app/llms-full.txt
