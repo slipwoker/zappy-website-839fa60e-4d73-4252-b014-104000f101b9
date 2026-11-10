@@ -1,5 +1,3 @@
-
-
 /* Self-hosted fonts (Inter + Rubik for multi-language support) */
 
 /* Inter font (English / LTR languages) */
@@ -67,6 +65,7 @@
   font-display: swap;
   src: url('assets/fonts/Rubik-Bold.woff2') format('woff2');
 }
+
 :root {
 --primary: #C96B3C;
   --secondary: #C96B3C;
@@ -231,17 +230,23 @@ em, i {
 }
 
 @media (max-width: 1024px) {
-  h1 { font-size: 36px !important; }
-  h2 { font-size: 28px !important; }
-  h3 { font-size: 20px !important; }
-  p  { font-size: 15px !important; }
+h1 { font-size: 36px !important; }
+
+h2 { font-size: 28px !important; }
+
+h3 { font-size: 20px !important; }
+
+p  { font-size: 15px !important; }
 }
 
 @media (max-width: 768px) {
-  h1 { font-size: 28px !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; }
-  h2 { font-size: 22px !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; }
-  h3 { font-size: 18px !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; }
-  p  { font-size: 14px !important; }
+h1 { font-size: 28px !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; }
+
+h2 { font-size: 22px !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; }
+
+h3 { font-size: 18px !important; margin-bottom: 1rem !important; margin-top: 0.5rem !important; }
+
+p  { font-size: 14px !important; }
 }
 
 .container {
@@ -333,27 +338,27 @@ html:not([dir]) .whatsapp-float {
 }
 
 @media (max-width: 768px) {
-  .container {
+.container {
     padding: 0 16px;
   }
 
-  .btn {
+.btn {
     padding: 14px 20px;
     font-size: 15px;
   }
 
-  .whatsapp-float {
+.whatsapp-float {
     width: 50px;
     height: 50px;
     font-size: 26px;
     bottom: 16px;
   }
 
-  html[dir="rtl"] .whatsapp-float {
+html[dir="rtl"] .whatsapp-float {
     right: 16px;
   }
 
-  html[dir="ltr"] .whatsapp-float,
+html[dir="ltr"] .whatsapp-float,
   html:not([dir]) .whatsapp-float {
     left: 16px;
   }
@@ -545,6 +550,7 @@ html:not([dir]) .whatsapp-float {
     max-height: 36px;
   }
 }
+
 .navbar {
   position: sticky;
   top: 0;
@@ -796,6 +802,7 @@ html:not([dir]) .whatsapp-float {
 .nav-menu a:focus:not(:focus-visible) {
   outline: none;
 }
+
 .navbar a:focus-visible,
 .navbar button:focus-visible,
 .nav-menu a:focus-visible {
@@ -904,6 +911,7 @@ html:not([dir]) .whatsapp-float {
 .nav-cta-container .zappy-search-container {
   align-self: center;
 }
+
 .nav-cta-container p {
   margin: 0 !important;
 }
@@ -1102,7 +1110,7 @@ html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .dropdown-menu {
 }
 
 @media (min-width: 769px) {
-  .nav-dropdown:hover > .dropdown-menu {
+.nav-dropdown:hover > .dropdown-menu {
     display: block;
   }
 }
@@ -2176,21 +2184,22 @@ main:not(.courses-page-main) { margin-top: 0 !important; padding-top: 0 !importa
 }
 
 @media (max-width: 480px) {
-  .site-footer {
+.site-footer {
     padding: 2.5rem 1rem 0;
   }
 
-  .footer-top {
+.footer-top {
     gap: 1.5rem;
   }
 
-  .footer-col h4 {
+.footer-col h4 {
     font-size: 1.05rem;
   }
 }
 
 /* V2 Decorative Helpers — quote marks */
 :root { --decorative-quote-color: var(--accent, #C96B3C); --decorative-quote-font: var(--accent-font, var(--font-display, serif)); }
+
 blockquote::before, .quote::before, [data-quote]::before {
   content: "\201C";
   font-family: var(--decorative-quote-font);
@@ -2201,6 +2210,7 @@ blockquote::before, .quote::before, [data-quote]::before {
   vertical-align: -0.4em;
   display: inline-block;
 }
+
 blockquote::after, .quote::after, [data-quote]::after {
   content: "\201D";
   font-family: var(--decorative-quote-font);
@@ -2211,7 +2221,9 @@ blockquote::after, .quote::after, [data-quote]::after {
   vertical-align: -0.6em;
   display: inline-block;
 }
+
 html[dir="rtl"] blockquote::before, html[dir="rtl"] .quote::before, html[dir="rtl"] [data-quote]::before { content: "\201D"; }
+
 html[dir="rtl"] blockquote::after, html[dir="rtl"] .quote::after, html[dir="rtl"] [data-quote]::after { content: "\201C"; }
 
 /* V2 Decorative Helpers — section divider flourish */
@@ -2244,10 +2256,13 @@ hr.section-flourish, .section-flourish, [data-section-divider] {
   pointer-events: none;
   z-index: 2;
 }
+
 .scroll-cue svg, [data-scroll-cue] svg { width: 1rem; height: 1rem; opacity: 0.7; }
+
 @media (prefers-reduced-motion: no-preference) {
-  .scroll-cue svg, [data-scroll-cue] svg { animation: decorative-scroll-bounce 2s ease-in-out infinite; }
+.scroll-cue svg, [data-scroll-cue] svg { animation: decorative-scroll-bounce 2s ease-in-out infinite; }
 }
+
 @keyframes decorative-scroll-bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(4px); }
@@ -2265,16 +2280,20 @@ hr.section-flourish, .section-flourish, [data-section-divider] {
 .site-footer .footer-bottom span:not(.separator) {
   color: #7A6B5E !important;
 }
+
 .site-footer .contact-list a:hover,
 .site-footer .footer-legal a:hover,
 .site-footer .footer-bottom a:hover {
   color: #F6EFE3 !important;
 }
+
 .site-footer .footer-legal .separator {
   color: #5A4C40 !important;
 }
+
 /* Footer contact alignment fix */
 .footer-contact li > a { display: flex; align-items: flex-start; gap: inherit; }
+
 /* RTL footer contact: icon on the right (start) side, text on the left */
 html[dir="rtl"] .footer-contact li,
 html[dir="rtl"] .site-footer .footer-contact li,
@@ -2282,21 +2301,31 @@ html[dir="rtl"] .site-footer .footer-col:nth-child(3) .footer-contact li {
   flex-direction: row !important;
   justify-content: flex-start !important;
 }
+
 html[dir="rtl"] .footer-contact .contact-icon { order: 0 !important; }
+
 html[dir="rtl"] .footer-contact .contact-text { order: 1 !important; }
+
 html[dir="rtl"] .footer-contact li > a { flex-direction: row !important; }
+
 /* Sticky footer guard for short pages */
 html, body { min-height: 100%; }
+
 body { min-height: 100vh; display: flex; flex-direction: column; }
+
 main { flex: 1 0 auto; }
+
 .site-footer { flex-shrink: 0; }
+
 /* hero */
 .hero h1, .hero-section h1, [class*="hero-"] h1, [class~="hero"] h1, .hero .hero-title, .hero-title { font-size: 48px !important; line-height: 1.2 !important; }
+
 @media (max-width: 1024px) {
-  .hero h1, .hero-section h1, [class*="hero-"] h1, [class~="hero"] h1, .hero .hero-title, .hero-title { font-size: 36px !important; }
+.hero h1, .hero-section h1, [class*="hero-"] h1, [class~="hero"] h1, .hero .hero-title, .hero-title { font-size: 36px !important; }
 }
+
 @media (max-width: 768px) {
-  .hero h1, .hero-section h1, [class*="hero-"] h1, [class~="hero"] h1, .hero .hero-title, .hero-title { font-size: 28px !important; }
+.hero h1, .hero-section h1, [class*="hero-"] h1, [class~="hero"] h1, .hero .hero-title, .hero-title { font-size: 28px !important; }
 }
 
 /* ZAPPY_POSTGEN_GUARD_FADE_BLEED_V2:בית-hero */
@@ -2304,16 +2333,20 @@ main { flex: 1 0 auto; }
   position: relative; isolation: isolate; overflow: hidden;
   display: flex !important; align-items: center !important; justify-content: flex-start !important;
 }
+
 [data-layout-spec="בית-hero"] .hero-fade-img, [data-layout-spec="בית-hero"] [data-hero-bg], [data-layout-spec="בית-hero"] > img:first-child {
   position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important;
   object-fit: cover !important; object-position: left center !important; margin: 0 !important; z-index: 0 !important;
   -webkit-mask-image: none !important; mask-image: none !important;
 }
+
 [data-layout-spec="בית-hero"]::before {
   content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
   background: linear-gradient(to left, var(--hero-fade-color, var(--bg-light, #ffffff)) 0%, var(--hero-fade-color, var(--bg-light, #ffffff)) 10%, transparent 58%);
 }
+
 [data-layout-spec="בית-hero"] > :where(:not(.hero-fade-img):not([data-hero-bg]):not(img):not(svg):not(style):not(script):not([class*="divider"]):not([class*="overlay"]):not([class*="wash"]):not([class*="grid"]):not([class*="decor"]):not([style*="position: absolute"]):not([style*="position:absolute"])) { position: relative; z-index: 2; }
+
 [data-layout-spec="בית-hero"] .hero-fade-content {
   position: relative !important; z-index: 2; width: min(600px, 52%); max-width: min(600px, 52%);
   margin-inline-start: 0 !important; margin-inline-end: auto !important; justify-self: start !important; align-self: center !important;
@@ -2321,10 +2354,13 @@ main { flex: 1 0 auto; }
   display: flex; flex-direction: column; justify-content: center;
   padding-inline: clamp(24px, 4vw, 48px) !important; box-sizing: border-box;
 }
+
 @media (max-width: 768px) {
-  [data-layout-spec="בית-hero"]::before { background: linear-gradient(to bottom, transparent 0%, var(--hero-fade-color, var(--bg-light, #ffffff)) 55%, var(--hero-fade-color, var(--bg-light, #ffffff)) 100%); }
-  [data-layout-spec="בית-hero"] { display: block !important; }
-  [data-layout-spec="בית-hero"] .hero-fade-content { width: 100%; max-width: 100%; padding-inline: clamp(16px, 5vw, 24px) !important; }
+[data-layout-spec="בית-hero"]::before { background: linear-gradient(to bottom, transparent 0%, var(--hero-fade-color, var(--bg-light, #ffffff)) 55%, var(--hero-fade-color, var(--bg-light, #ffffff)) 100%); }
+
+[data-layout-spec="בית-hero"] { display: block !important; }
+
+[data-layout-spec="בית-hero"] .hero-fade-content { width: 100%; max-width: 100%; padding-inline: clamp(16px, 5vw, 24px) !important; }
 }
 
 /* services */
@@ -2882,15 +2918,15 @@ main { flex: 1 0 auto; }
 }
 
 @media (min-width: 768px) {
-  .index-process-section {
+.index-process-section {
     padding: 96px 32px 60px;
   }
 
-  .index-process-section__header {
+.index-process-section__header {
     margin-bottom: 64px;
   }
 
-  .index-process-section__timeline {
+.index-process-section__timeline {
     flex-direction: row;
     align-items: stretch;
     gap: 0;
@@ -2898,7 +2934,7 @@ main { flex: 1 0 auto; }
     padding: 0 16px;
   }
 
-  .index-process-section__line {
+.index-process-section__line {
     display: block;
     position: absolute;
     top: 24px;
@@ -2910,7 +2946,7 @@ main { flex: 1 0 auto; }
     z-index: 1;
   }
 
-  .index-process-section__step {
+.index-process-section__step {
     flex-direction: column;
     align-items: center;
     flex: 1;
@@ -2918,17 +2954,17 @@ main { flex: 1 0 auto; }
     padding: 0 8px;
   }
 
-  .index-process-section__step-marker {
+.index-process-section__step-marker {
     margin-bottom: 0;
   }
 
-  .index-process-section__step-card {
+.index-process-section__step-card {
     text-align: center;
     width: 100%;
     min-width: 220px;
   }
 
-  .index-process-section__note {
+.index-process-section__note {
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
@@ -2937,23 +2973,23 @@ main { flex: 1 0 auto; }
 }
 
 @media (max-width: 768px) {
-  .index-process-section {
+.index-process-section {
     padding: 64px 16px 60px;
   }
 
-  .index-process-section__header {
+.index-process-section__header {
     margin-bottom: 36px;
   }
 
-  .index-process-section__title {
+.index-process-section__title {
     font-size: 1.75rem;
   }
 
-  .index-process-section__timeline {
+.index-process-section__timeline {
     gap: 16px;
   }
 
-  .index-process-section__step-card {
+.index-process-section__step-card {
     padding: 16px;
   }
 }
@@ -3385,20 +3421,20 @@ main { flex: 1 0 auto; }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-  .index-stats-container {
+.index-stats-container {
     gap: 40px;
   }
 
-  .index-stats-header {
+.index-stats-header {
     flex: 0 0 42%;
   }
 
-  .index-stats-grid {
+.index-stats-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
   }
 
-  .index-stat-number {
+.index-stat-number {
     font-size: 2.4rem;
   }
 }
@@ -3781,8 +3817,11 @@ main { flex: 1 0 auto; }
 
 /* RTL footer contact: icon on the right (start) side, text on the left */
 html[dir="rtl"] .footer-contact li, html[dir="rtl"] .site-footer .footer-contact li, html[dir="rtl"] .site-footer .footer-col:nth-child(3) .footer-contact li { flex-direction: row !important; justify-content: flex-start !important; }
+
 html[dir="rtl"] .footer-contact .contact-icon { order: 0 !important; }
+
 html[dir="rtl"] .footer-contact .contact-text { order: 1 !important; }
+
 html[dir="rtl"] .footer-contact li > a { flex-direction: row !important; }
 
 /* ============================================
@@ -4013,89 +4052,139 @@ html[dir="rtl"] .footer-contact li > a { flex-direction: row !important; }
   }
 }
 
-/* END MOBILE RESPONSIVE FIXES */
+.navbar {
+  background-color: #000000 !important;
+  background-image: linear-gradient(to bottom, rgba(255,255,255,var(--nav-overlay-opacity,0.25)), transparent) !important;
+  transition: background-color 0.3s ease, background-image 0.3s ease, backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease, box-shadow 0.3s ease !important;
+}
 
-/* === NAVBAR STYLE OVERRIDES START === */
-.navbar { background-color: transparent !important; background-image: linear-gradient(to bottom, rgba(255,255,255,var(--nav-overlay-opacity,0.25)), transparent) !important; transition: background-color 0.3s ease, background-image 0.3s ease, backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease, box-shadow 0.3s ease !important; }
 .zappy-catalog-menu, #zappy-catalog-menu { background-image: linear-gradient(to bottom, rgba(255,255,255,var(--nav-overlay-opacity,0.25)), transparent) !important; transition: background 0.3s ease, background-image 0.3s ease, backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease !important;}
+
 .navbar .nav-menu > li > a,
 .navbar .nav-menu > .nav-item > a,
 .navbar .nav-link,
 .navbar .navbar-nav .nav-link,
 .navbar a:not(.nav-cta-btn) { color: #2A241F !important; }
+
 .navbar .nav-menu > li > a:hover,
 .navbar .nav-menu > .nav-item > a:hover,
 .navbar .nav-link:hover,
 .navbar a:not(.nav-cta-btn):hover { color: #C96B3C !important; }
+
 .navbar .navbar-brand, .navbar .navbar-brand a { color: #2A241F !important; }
+
 .navbar .dropdown-toggle { color: #2A241F !important; }
+
 .navbar .dropdown-toggle:hover { color: #C96B3C !important; }
+
 .navbar .mobile-hamburger-btn, .navbar .mobile-close-btn { color: #2A241F !important; }
+
 .navbar-toggler { color: #2A241F !important; border-color: #2A241F44 !important; }
+
 .navbar-toggler-icon { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%232A241F' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important; }
+
 .navbar .dropdown-menu { background-color: #2A241F !important; }
+
 .navbar .dropdown-menu li a,
 .navbar .dropdown-menu .dropdown-item { color: #2A241F !important; }
+
 .navbar .dropdown-menu li a:hover,
 .navbar .dropdown-menu .dropdown-item:hover { color: #cd774c !important; background-color: rgba(128,128,128,0.1) !important; }
+
 .navbar .sub-menu,
 .navbar ul.sub-menu,
 nav.navbar .sub-menu { background-color: #2A241F !important; }
+
 .navbar .sub-menu a,
 .navbar .sub-menu li a,
 .navbar .nav-menu .sub-menu a,
 .navbar .nav-menu .sub-menu li a,
 .navbar .zappy-products-dropdown .sub-menu a,
 nav.navbar .sub-menu li a { color: #2A241F !important; }
+
 .navbar .sub-menu a:hover,
 .navbar .sub-menu li a:hover,
 nav.navbar .sub-menu li a:hover { color: #cd774c !important; background-color: rgba(128,128,128,0.1) !important; }
+
 .navbar .mobile-submenu-toggle { color: #2A241F !important; }
+
 .navbar .phone-header-btn { color: #2A241F !important; }
+
 .navbar .nav-search-input,
 .navbar .nav-search-box .nav-search-input { color: #2A241F !important; }
+
 .navbar .nav-search-input::placeholder { color: var(--text-muted, rgba(128,128,128,0.6)) !important; }
+
 @media (min-width: 769px) {
-  .navbar .nav-search-box .nav-search-btn { color: #2A241F !important; }
-  .navbar .nav-search-box .nav-search-btn svg { stroke: #2A241F !important; fill: none !important; }
+.navbar .nav-search-box .nav-search-btn { color: #2A241F !important; }
+
+.navbar .nav-search-box .nav-search-btn svg { stroke: #2A241F !important; fill: none !important; }
 }
+
 .navbar .nav-search-result-name { color: #2A241F !important; }
+
 .navbar .nav-search-result-item a { color: #2A241F !important; }
+
 .navbar .nav-search-result-price { color: var(--accent, var(--primary)) !important; }
+
 .navbar .nav-search-no-results,
 .navbar .search-no-results { color: var(--text-muted, rgba(128,128,128,0.6)) !important; }
+
 .zappy-catalog-menu, #zappy-catalog-menu { background: transparent !important; }
+
 .zappy-catalog-menu .catalog-menu-item,
 .zappy-catalog-menu .catalog-menu-all { color: #2A241F !important; }
+
 .zappy-catalog-menu .catalog-menu-item:hover,
 .zappy-catalog-menu .catalog-menu-all:hover { color: #C96B3C !important; background: rgba(128,128,128,0.1) !important; }
+
 .navbar .cart-link.nav-cart,
 .navbar .login-link.nav-login,
 .navbar .nav-search-toggle,
 .navbar .search-toggle { background: var(--bg-light, #ffffff) !important; color: #2A241F !important; }
+
 .navbar .cart-link.nav-cart:hover,
 .navbar .login-link.nav-login:hover,
 .navbar .nav-search-toggle:hover,
 .navbar .search-toggle:hover { background: rgba(128,128,128,0.15) !important; color: #2A241F !important; }
+
 .navbar .cart-link.nav-cart svg, .navbar .login-link.nav-login svg, .navbar .nav-search-toggle svg, .navbar .search-toggle svg { color: inherit !important; fill: none !important; stroke: currentColor !important; }
 
 @media (min-width: 769px) {
-  .navbar:not(.scrolled) .dropdown-menu { background-color: #2A241F !important; }
-  .navbar:not(.scrolled) .dropdown-menu li a,
+.navbar:not(.scrolled) .dropdown-menu { background-color: #2A241F !important; }
+
+.navbar:not(.scrolled) .dropdown-menu li a,
   .navbar:not(.scrolled) .dropdown-menu .dropdown-item { color: #F6EFE3 !important; }
-  .navbar:not(.scrolled) .dropdown-menu li a:hover,
+
+.navbar:not(.scrolled) .dropdown-menu li a:hover,
   .navbar:not(.scrolled) .dropdown-menu .dropdown-item:hover { color: var(--nav-text-hover, var(--accent)) !important; }
-  .navbar:not(.scrolled) .sub-menu { background-color: #2A241F !important; }
-  .navbar:not(.scrolled) .sub-menu a,
+
+.navbar:not(.scrolled) .sub-menu { background-color: #2A241F !important; }
+
+.navbar:not(.scrolled) .sub-menu a,
   .navbar:not(.scrolled) .sub-menu li a,
   .navbar:not(.scrolled) .nav-menu .sub-menu a,
   .navbar:not(.scrolled) .zappy-products-dropdown .sub-menu a { color: #F6EFE3 !important; }
-  .navbar:not(.scrolled) .sub-menu a:hover,
+
+.navbar:not(.scrolled) .sub-menu a:hover,
   .navbar:not(.scrolled) .sub-menu li a:hover { color: var(--nav-text-hover, var(--accent)) !important; }
 }
-.navbar.scrolled { background-color: rgba(42,36,31,0.85) !important; background-image: none !important; backdrop-filter: blur(12px) !important; -webkit-backdrop-filter: blur(12px) !important; box-shadow: 0 2px 16px rgba(0,0,0,0.12) !important; }
-.navbar.scrolled::before, .navbar.scrolled::after { background: transparent !important; opacity: 0 !important; }
+
+.navbar.scrolled {
+  background-color: #000000 !important;
+  background-image: none !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.12) !important;
+}
+
+.navbar.scrolled::before, .navbar.scrolled::after {
+  background: #000000 !important;
+  opacity: 0 !important;
+}
+
 .navbar.scrolled ~ .zappy-catalog-menu, .navbar.scrolled ~ #zappy-catalog-menu, .zappy-catalog-menu.scrolled, #zappy-catalog-menu.scrolled { background: rgba(42,36,31,0.85) !important; background-image: none !important; backdrop-filter: blur(12px) !important; -webkit-backdrop-filter: blur(12px) !important; }
+
 .zappy-catalog-menu.scrolled .catalog-menu-item,
 .zappy-catalog-menu.scrolled .catalog-menu-all,
 #zappy-catalog-menu.scrolled .catalog-menu-item,
@@ -4104,6 +4193,7 @@ nav.navbar .sub-menu li a:hover { color: #cd774c !important; background-color: r
 .navbar.scrolled ~ .zappy-catalog-menu .catalog-menu-all,
 .navbar.scrolled ~ #zappy-catalog-menu .catalog-menu-item,
 .navbar.scrolled ~ #zappy-catalog-menu .catalog-menu-all { color: var(--frosted-text, #F6EFE3) !important; }
+
 .zappy-catalog-menu.scrolled .catalog-menu-item:hover,
 .zappy-catalog-menu.scrolled .catalog-menu-all:hover,
 #zappy-catalog-menu.scrolled .catalog-menu-item:hover,
@@ -4112,62 +4202,90 @@ nav.navbar .sub-menu li a:hover { color: #cd774c !important; background-color: r
 .navbar.scrolled ~ .zappy-catalog-menu .catalog-menu-all:hover,
 .navbar.scrolled ~ #zappy-catalog-menu .catalog-menu-item:hover,
 .navbar.scrolled ~ #zappy-catalog-menu .catalog-menu-all:hover { color: var(--nav-text-hover, var(--accent)) !important; }
+
 .navbar.scrolled .nav-menu > li > a,
 .navbar.scrolled .nav-menu > .nav-item > a,
 .navbar.scrolled .nav-link,
 .navbar.scrolled a:not(.nav-cta-btn) { color: var(--frosted-text, #F6EFE3) !important; }
+
 .navbar.scrolled .nav-menu > li > a:hover,
 .navbar.scrolled .nav-menu > .nav-item > a:hover,
 .navbar.scrolled .nav-link:hover,
 .navbar.scrolled a:not(.nav-cta-btn):hover { color: var(--nav-text-hover, var(--accent)) !important; }
+
 .navbar.scrolled .navbar-brand, .navbar.scrolled .navbar-brand a { color: var(--frosted-text, #F6EFE3) !important; }
+
 .navbar.scrolled .dropdown-toggle { color: var(--frosted-text, #F6EFE3) !important; }
+
 .navbar.scrolled .mobile-hamburger-btn, .navbar.scrolled .mobile-close-btn { color: var(--frosted-text, #F6EFE3) !important; }
+
 .navbar.scrolled .phone-header-btn { color: var(--frosted-text, #F6EFE3) !important; }
+
 .navbar.scrolled .mobile-toggle { color: var(--frosted-text, #F6EFE3) !important; }
+
 .navbar.scrolled .mobile-toggle svg { color: inherit !important; }
+
 .navbar.scrolled .mobile-toggle svg path { stroke: currentColor !important; }
+
 .navbar.scrolled .mobile-hamburger-btn svg,
 .navbar.scrolled .mobile-close-btn svg,
 .navbar.scrolled .phone-header-btn svg,
 .navbar.scrolled .navbar-brand svg,
 .navbar.scrolled .logo-link svg { color: inherit !important; stroke: currentColor !important; }
+
 .navbar.scrolled .mobile-hamburger-btn svg path,
 .navbar.scrolled .mobile-close-btn svg path,
 .navbar.scrolled .phone-header-btn svg path,
 .navbar.scrolled .navbar-brand svg path,
 .navbar.scrolled .logo-link svg path { stroke: currentColor !important; }
+
 .navbar.scrolled .nav-search-btn { color: var(--frosted-text, #F6EFE3) !important; }
+
 .navbar.scrolled .nav-search-btn svg { stroke: var(--frosted-text, #F6EFE3) !important; fill: none !important; }
+
 @media (min-width: 769px) {
-  .navbar.scrolled .sub-menu,
+.navbar.scrolled .sub-menu,
   .navbar.scrolled ul.sub-menu,
   nav.navbar.scrolled .sub-menu { background-color: var(--bg-light, #ffffff) !important; border-radius: 8px !important; box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important; }
-  .navbar.scrolled .sub-menu a,
+
+.navbar.scrolled .sub-menu a,
   .navbar.scrolled .sub-menu li a,
   .navbar.scrolled .nav-menu .sub-menu a,
   .navbar.scrolled .nav-menu .sub-menu li a,
   .navbar.scrolled .zappy-products-dropdown .sub-menu a,
   nav.navbar.scrolled .sub-menu li a { color: #2A241F !important; }
-  .navbar.scrolled .sub-menu a:hover,
+
+.navbar.scrolled .sub-menu a:hover,
   .navbar.scrolled .sub-menu li a:hover,
   .navbar.scrolled .nav-menu .sub-menu a:hover,
   nav.navbar.scrolled .sub-menu li a:hover { color: #C96B3C !important; background-color: rgba(128,128,128,0.1) !important; }
-  .navbar.scrolled .dropdown-menu { background-color: var(--bg-light, #ffffff) !important; }
-  .navbar.scrolled .dropdown-menu li a,
+
+.navbar.scrolled .dropdown-menu { background-color: var(--bg-light, #ffffff) !important; }
+
+.navbar.scrolled .dropdown-menu li a,
   .navbar.scrolled .dropdown-menu .dropdown-item { color: #2A241F !important; }
-  .navbar.scrolled .dropdown-menu li a:hover,
+
+.navbar.scrolled .dropdown-menu li a:hover,
   .navbar.scrolled .dropdown-menu .dropdown-item:hover { color: #C96B3C !important; background-color: rgba(128,128,128,0.1) !important; }
-  .navbar.scrolled .mobile-submenu-toggle { color: #2A241F !important; }
+
+.navbar.scrolled .mobile-submenu-toggle { color: #2A241F !important; }
 }
 
 .navbar.scrolled .cart-link.nav-cart,
 .navbar.scrolled .login-link.nav-login,
 .navbar.scrolled .nav-search-toggle,
 .navbar.scrolled .search-toggle { background: var(--bg-light, #ffffff) !important; color: #2A241F !important; }
+
 @media (max-width: 768px) {
-  .navbar { background-color: transparent !important; background-image: none !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; box-shadow: none !important; }
-  /* Kill backdrop-filter on EVERY navbar state at mobile (not just base .navbar).
+.navbar {
+  background-color: #000000 !important;
+  background-image: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+
+/* Kill backdrop-filter on EVERY navbar state at mobile (not just base .navbar).
      A backdrop-filter makes the navbar the containing block for fixed-positioned
      descendants, so the fixed mobile menu's top/bottom resolve against the ~70px
      navbar instead of the viewport and the open menu collapses to a sliver on
@@ -4175,25 +4293,47 @@ nav.navbar .sub-menu li a:hover { color: #cd774c !important; background-color: r
      generated ".navbar.scrolled { backdrop-filter: ... !important }" rule. The
      mobile navbar background is solid, so the blur is purely decorative here. */
   .navbar.scrolled, nav.navbar.scrolled, .navbar.active, .navbar.open, .navbar.show, .navbar.menu-open, .zappy-catalog-menu, #zappy-catalog-menu, .zappy-catalog-menu.scrolled, #zappy-catalog-menu.scrolled { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
-  .zappy-catalog-menu, #zappy-catalog-menu { background-image: none !important; }
-  .navbar::before, .navbar::after { background: transparent !important; opacity: 0 !important; }
-  body.menu-open .navbar, body.nav-open .navbar, body.mobile-menu-open .navbar, .navbar.scrolled, .navbar.active, .navbar.open, .navbar.show, .navbar.menu-open, .navbar:has(.nav-menu.active), .navbar:has(#navMenu.active), .navbar:has(.mobile-menu.active), .navbar:has(.mobile-toggle.active), .navbar:has(#mobileToggle.active) { background-color: #2A241F !important; }
-  .nav-menu, .nav-menu.active, .nav-menu.nav-menu-active, #navMenu, #navMenu.active, .mobile-menu, .mobile-menu.active, .mobile-nav, .mobile-nav.active { background-color: #2A241F !important; background: #2A241F !important; }
-  .nav-menu.active, .nav-menu.nav-menu-active, #navMenu.active, .mobile-menu.active, .mobile-nav.active { height: calc(100dvh - 70px) !important; max-height: calc(100dvh - 70px) !important; overflow-y: auto !important; }
-  .nav-menu a, .nav-menu > li > a, #navMenu a, #navMenu > li > a { color: #F6EFE3 !important; }
-  .nav-menu a:hover, .nav-menu > li > a:hover { color: #C96B3C !important; }
-  .nav-menu .dropdown-menu { background: rgba(128,128,128,0.06) !important; }
-  .nav-menu .dropdown-menu a, .nav-menu .dropdown-menu li a { color: #F6EFE3 !important; }
-  .nav-menu .dropdown-menu a:hover { color: #C96B3C !important; }
-  .nav-menu .sub-menu a { color: #F6EFE3 !important; white-space: normal !important; }
-  .nav-menu .sub-menu a:hover { color: #C96B3C !important; }
-  .nav-menu > li { position: relative !important; }
-  .navbar .nav-menu .mobile-submenu-toggle { color: #F6EFE3 !important; position: static !important; height: auto !important; flex-shrink: 0 !important; align-self: stretch !important; }
-  .mobile-toggle { color: #2A241F !important; }
-  .mobile-toggle svg { color: inherit !important; }
-  .mobile-toggle svg path { stroke: currentColor !important; }
-  
-  /* When menu is open or navbar is scrolled in mobile, the background is dropdownBg, so text should be mobileMenuText */
+
+.zappy-catalog-menu, #zappy-catalog-menu { background-image: none !important; }
+
+.navbar::before, .navbar::after {
+  background: #000000 !important;
+  opacity: 0 !important;
+}
+
+body.menu-open .navbar, body.nav-open .navbar, body.mobile-menu-open .navbar, .navbar.scrolled, .navbar.active, .navbar.open, .navbar.show, .navbar.menu-open, .navbar:has(.nav-menu.active), .navbar:has(#navMenu.active), .navbar:has(.mobile-menu.active), .navbar:has(.mobile-toggle.active), .navbar:has(#mobileToggle.active) {
+  background-color: #000000 !important;
+}
+
+.nav-menu, .nav-menu.active, .nav-menu.nav-menu-active, #navMenu, #navMenu.active, .mobile-menu, .mobile-menu.active, .mobile-nav, .mobile-nav.active { background-color: #2A241F !important; background: #2A241F !important; }
+
+.nav-menu.active, .nav-menu.nav-menu-active, #navMenu.active, .mobile-menu.active, .mobile-nav.active { height: calc(100dvh - 70px) !important; max-height: calc(100dvh - 70px) !important; overflow-y: auto !important; }
+
+.nav-menu a, .nav-menu > li > a, #navMenu a, #navMenu > li > a { color: #F6EFE3 !important; }
+
+.nav-menu a:hover, .nav-menu > li > a:hover { color: #C96B3C !important; }
+
+.nav-menu .dropdown-menu { background: rgba(128,128,128,0.06) !important; }
+
+.nav-menu .dropdown-menu a, .nav-menu .dropdown-menu li a { color: #F6EFE3 !important; }
+
+.nav-menu .dropdown-menu a:hover { color: #C96B3C !important; }
+
+.nav-menu .sub-menu a { color: #F6EFE3 !important; white-space: normal !important; }
+
+.nav-menu .sub-menu a:hover { color: #C96B3C !important; }
+
+.nav-menu > li { position: relative !important; }
+
+.navbar .nav-menu .mobile-submenu-toggle { color: #F6EFE3 !important; position: static !important; height: auto !important; flex-shrink: 0 !important; align-self: stretch !important; }
+
+.mobile-toggle { color: #2A241F !important; }
+
+.mobile-toggle svg { color: inherit !important; }
+
+.mobile-toggle svg path { stroke: currentColor !important; }
+
+/* When menu is open or navbar is scrolled in mobile, the background is dropdownBg, so text should be mobileMenuText */
   .navbar.scrolled .mobile-toggle, .navbar.scrolled .mobile-hamburger-btn, .navbar.scrolled .mobile-close-btn,
   .navbar.scrolled .navbar-brand, .navbar.scrolled .dropdown-toggle, .navbar.scrolled .phone-header-btn,
   body.menu-open .navbar .mobile-toggle, body.nav-open .navbar .mobile-toggle, body.mobile-menu-open .navbar .mobile-toggle,
@@ -4207,7 +4347,8 @@ nav.navbar .sub-menu li a:hover { color: #cd774c !important; background-color: r
   .navbar:has(.nav-menu.active) .phone-header-btn, .navbar:has(#navMenu.active) .phone-header-btn, .navbar:has(.mobile-menu.active) .phone-header-btn, .navbar:has(.mobile-toggle.active) .phone-header-btn {
     color: #F6EFE3 !important;
   }
-  .navbar.scrolled .mobile-toggle svg, .navbar.scrolled .mobile-hamburger-btn svg, .navbar.scrolled .mobile-close-btn svg,
+
+.navbar.scrolled .mobile-toggle svg, .navbar.scrolled .mobile-hamburger-btn svg, .navbar.scrolled .mobile-close-btn svg,
   .navbar.scrolled .navbar-brand svg, .navbar.scrolled .dropdown-toggle svg, .navbar.scrolled .phone-header-btn svg,
   body.menu-open .navbar .mobile-toggle svg, body.nav-open .navbar .mobile-toggle svg, body.mobile-menu-open .navbar .mobile-toggle svg,
   .navbar.active .mobile-toggle svg, .navbar.open .mobile-toggle svg, .navbar.show .mobile-toggle svg, .navbar.menu-open .mobile-toggle svg,
@@ -4221,7 +4362,8 @@ nav.navbar .sub-menu li a:hover { color: #cd774c !important; background-color: r
     color: #F6EFE3 !important;
     stroke: currentColor !important;
   }
-  .navbar.scrolled .mobile-toggle svg path, .navbar.scrolled .mobile-hamburger-btn svg path, .navbar.scrolled .mobile-close-btn svg path,
+
+.navbar.scrolled .mobile-toggle svg path, .navbar.scrolled .mobile-hamburger-btn svg path, .navbar.scrolled .mobile-close-btn svg path,
   .navbar.scrolled .navbar-brand svg path, .navbar.scrolled .dropdown-toggle svg path, .navbar.scrolled .phone-header-btn svg path,
   body.menu-open .navbar .mobile-toggle svg path, body.nav-open .navbar .mobile-toggle svg path, body.mobile-menu-open .navbar .mobile-toggle svg path,
   .navbar.active .mobile-toggle svg path, .navbar.open .mobile-toggle svg path, .navbar.show .mobile-toggle svg path, .navbar.menu-open .mobile-toggle svg path,
@@ -4234,36 +4376,47 @@ nav.navbar .sub-menu li a:hover { color: #cd774c !important; background-color: r
   .navbar:has(.nav-menu.active) .navbar-brand svg path, .navbar:has(#navMenu.active) .navbar-brand svg path, .navbar:has(.mobile-menu.active) .navbar-brand svg path, .navbar:has(.mobile-toggle.active) .navbar-brand svg path {
     stroke: currentColor !important;
   }
-  
-  .navbar.scrolled .mobile-toggle svg { color: inherit !important; }
-  .navbar.scrolled .mobile-toggle svg path { stroke: currentColor !important; }
-  
-  .navbar.scrolled .nav-menu > li > a,
+
+.navbar.scrolled .mobile-toggle svg { color: inherit !important; }
+
+.navbar.scrolled .mobile-toggle svg path { stroke: currentColor !important; }
+
+.navbar.scrolled .nav-menu > li > a,
   .navbar.scrolled .nav-menu > .nav-item > a,
   .navbar.scrolled .nav-link,
   .navbar.scrolled a:not(.nav-cta-btn) { color: #F6EFE3 !important; }
-  .cart-link.nav-cart,
+
+.cart-link.nav-cart,
   .login-link.nav-login,
   .nav-search-toggle,
   .search-toggle { background: var(--bg-light, #ffffff) !important; color: #2A241F !important; }
-  .cart-link.nav-cart svg,
+
+.cart-link.nav-cart svg,
   .login-link.nav-login svg,
   .nav-search-toggle svg,
   .search-toggle svg { stroke: #2A241F !important; color: #2A241F !important; }
-  .mobile-search-panel { color: #F6EFE3 !important; }
-  .mobile-search-panel input { color: #F6EFE3 !important; background: rgba(255,255,255,0.12) !important; }
-  .mobile-search-panel .close-search { color: #F6EFE3 !important; background: rgba(255,255,255,0.15) !important; }
-  .mobile-search-panel .close-search svg { stroke: #F6EFE3 !important; color: #F6EFE3 !important; }
-  .mobile-search-panel .close-search:hover { color: #F6EFE3 !important; background: rgba(255,255,255,0.25) !important; }
-  .mobile-search-panel .close-search:hover svg { stroke: #F6EFE3 !important; color: #F6EFE3 !important; }
-  .navbar .zappy-products-dropdown .sub-menu,
+
+.mobile-search-panel { color: #F6EFE3 !important; }
+
+.mobile-search-panel input { color: #F6EFE3 !important; background: rgba(255,255,255,0.12) !important; }
+
+.mobile-search-panel .close-search { color: #F6EFE3 !important; background: rgba(255,255,255,0.15) !important; }
+
+.mobile-search-panel .close-search svg { stroke: #F6EFE3 !important; color: #F6EFE3 !important; }
+
+.mobile-search-panel .close-search:hover { color: #F6EFE3 !important; background: rgba(255,255,255,0.25) !important; }
+
+.mobile-search-panel .close-search:hover svg { stroke: #F6EFE3 !important; color: #F6EFE3 !important; }
+
+.navbar .zappy-products-dropdown .sub-menu,
   .navbar .zappy-products-dropdown > .sub-menu {
     display: none !important; position: static !important; max-height: 0 !important;
     overflow: hidden !important; opacity: 0 !important; visibility: hidden !important;
     pointer-events: none !important; box-shadow: none !important; border: none !important;
     padding: 0 !important; transform: none !important;
   }
-  .navbar .zappy-products-dropdown:hover .sub-menu,
+
+.navbar .zappy-products-dropdown:hover .sub-menu,
   .navbar .zappy-products-dropdown:hover > .sub-menu,
   .navbar .zappy-products-dropdown:focus-within .sub-menu,
   .navbar .zappy-products-dropdown:focus-within > .sub-menu,
@@ -4272,7 +4425,8 @@ nav.navbar .sub-menu li a:hover { color: #cd774c !important; background-color: r
     display: none !important; opacity: 0 !important; visibility: hidden !important;
     max-height: 0 !important; pointer-events: none !important;
   }
-  .navbar .zappy-products-dropdown.open .sub-menu,
+
+.navbar .zappy-products-dropdown.open .sub-menu,
   .navbar .zappy-products-dropdown.open > .sub-menu,
   .navbar .zappy-products-dropdown .sub-menu.mobile-expanded,
   .navbar .zappy-products-dropdown > .sub-menu.mobile-expanded,
@@ -4284,6 +4438,7 @@ nav.navbar .sub-menu li a:hover { color: #cd774c !important; background-color: r
     overflow-y: visible !important; padding: 0.5rem 0 !important;
   }
 }
+
 /* === NAVBAR STYLE OVERRIDES END === */
 
 /* Legal Pages Content Styles */
@@ -4554,19 +4709,23 @@ nav.navbar .sub-menu li a:hover { color: #cd774c !important; background-color: r
   cursor: pointer;
   transition: background-color 0.15s ease, color 0.15s ease;
 }
+
 #zappy-cookie-banner .zappy-cookie-banner__close:hover {
   background-color: rgba(0, 0, 0, 0.06) !important;
   color: var(--cc-primary-color) !important;
 }
+
 #zappy-cookie-banner .zappy-cookie-banner__button:focus-visible,
 #zappy-cookie-banner .zappy-cookie-banner__close:focus-visible {
   outline: 2px solid var(--cc-btn-primary-bg) !important;
   outline-offset: 2px;
 }
+
 /* RTL: anchor the X to the top-LEFT and shift body padding accordingly. */
 [dir="rtl"] #zappy-cookie-banner {
   padding: 10px 20px 10px 56px !important;
 }
+
 [dir="rtl"] #zappy-cookie-banner .zappy-cookie-banner__close {
   right: auto !important;
   left: 12px !important;
@@ -4645,6 +4804,7 @@ nav.navbar .sub-menu li a:hover { color: #cd774c !important; background-color: r
 #cc--main .pm__btn {
   border-radius: 999px !important;
 }
+
 #cc-main .pm__btn[data-role="necessary"],
 #cc--main .pm__btn[data-role="necessary"],
 #cc-main .pm__btn[data-role="save"],
@@ -4653,6 +4813,7 @@ nav.navbar .sub-menu li a:hover { color: #cd774c !important; background-color: r
   color: var(--cc-btn-secondary-color) !important;
   border: 1px solid var(--cc-btn-secondary-border) !important;
 }
+
 #cc-main .pm__btn[data-role="necessary"]:hover,
 #cc--main .pm__btn[data-role="necessary"]:hover,
 #cc-main .pm__btn[data-role="save"]:hover,
@@ -5167,35 +5328,35 @@ div[id*="mic-access-tool-box"] button[class*="reset"] * {
 }
 
 @media (max-width: 768px) {
-  .index-hero-section {
+.index-hero-section {
     padding: 120px 16px 60px;
     min-height: 100dvh;
     justify-content: center;
   }
 
-  .index-hero-section__content {
+.index-hero-section__content {
     padding-inline-start: 0;
     text-align: center;
   }
 
-  .index-hero-section__title {
+.index-hero-section__title {
     font-size: 2.2rem;
     line-height: 1.2;
     max-width: none;
   }
 
-  .index-hero-section__subtitle {
+.index-hero-section__subtitle {
     font-size: 1.1rem;
     margin: 0 auto 32px;
     max-width: 420px;
   }
 
-  .index-hero-section__badge {
+.index-hero-section__badge {
     margin-bottom: 20px;
     font-size: 0.8rem;
   }
 
-  .index-hero-section__phone-card {
+.index-hero-section__phone-card {
     flex-direction: column;
     align-items: center;
     text-align: center;
@@ -5205,49 +5366,49 @@ div[id*="mic-access-tool-box"] button[class*="reset"] * {
     max-width: 400px;
   }
 
-  .index-hero-section__phone-info {
+.index-hero-section__phone-info {
     align-items: center;
   }
 
-  .index-hero-section__phone-number {
+.index-hero-section__phone-number {
     font-size: 1.8rem;
   }
 
-  .index-hero-section__call-btn {
+.index-hero-section__call-btn {
     width: 100%;
     justify-content: center;
   }
 
-  .index-hero-section__trust-list {
+.index-hero-section__trust-list {
     justify-content: center;
     gap: 16px;
   }
 
-  .index-hero-section__trust-item {
+.index-hero-section__trust-item {
     font-size: 0.85rem;
   }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-  .index-hero-section__title {
+.index-hero-section__title {
     font-size: 2.6rem;
   }
 
-  .index-hero-section__phone-number {
+.index-hero-section__phone-number {
     font-size: 2rem;
   }
 }
+
 /* ZAPPY_POSTGEN_GUARD_HERO_FONT_CAP:index-hero */
 .hero h1, .hero-section h1, [class*="hero-"] h1, [class~="hero"] h1, .hero .hero-title, .hero-title { font-size: 48px !important; line-height: 1.2 !important; }
+
 @media (max-width: 1024px) {
-  .hero h1, .hero-section h1, [class*="hero-"] h1, [class~="hero"] h1, .hero .hero-title, .hero-title { font-size: 36px !important; }
+.hero h1, .hero-section h1, [class*="hero-"] h1, [class~="hero"] h1, .hero .hero-title, .hero-title { font-size: 36px !important; }
 }
+
 @media (max-width: 768px) {
-  .hero h1, .hero-section h1, [class*="hero-"] h1, [class~="hero"] h1, .hero .hero-title, .hero-title { font-size: 28px !important; }
+.hero h1, .hero-section h1, [class*="hero-"] h1, [class~="hero"] h1, .hero .hero-title, .hero-title { font-size: 28px !important; }
 }
-
-
-
 
 body {
   background-color: var(--background-color, var(--background, var(--bg-light, #000000))) !important;
@@ -5446,9 +5607,11 @@ body .whatsapp-float {
   opacity: 0 !important;
   pointer-events: none !important;
 }
+
 /* === BUTTON TEXT OVERRIDES START === */
 .navbar .nav-cta-btn,
 .nav-cta-btn { color: #FFFFFF !important; }
+
 /* === BUTTON TEXT OVERRIDES END === */
 
 
@@ -5619,15 +5782,6 @@ body:has(.zappy-announcement-bar) nav.navbar:not(.zappy-catalog-menu),
 body:has(.zappy-announcement-bar) header.navbar,
 body:has(.zappy-announcement-bar) .navbar:not(.zappy-catalog-menu):not(.mobile-search-panel) {
   top: var(--zappy-announcement-height, 40px) !important;
-}
-/* First-paint: pull fullscreen heroes behind the fixed announcement+nav so a
-   transparent --nav-bg does not flash the cream body strip (live FOUC that
-   preview never showed because preview injects the same underlap eagerly). */
-body:has(.zappy-announcement-bar) section[data-hero-type^="fullscreen"],
-body:has(.zappy-announcement-bar) .index-hero-section,
-body:has(.zappy-announcement-bar) main > section[class*="hero"]:first-of-type {
-  margin-top: calc(-1 * var(--zappy-header-stack-height)) !important;
-  padding-top: calc(var(--zappy-header-stack-height)) !important;
 }
 
 
@@ -6849,6 +7003,12 @@ html[dir="ltr"] .solution-item.solution-reverse .solution-image { order: -1 !imp
 html[dir="ltr"] .solution-item.solution-reverse .solution-content { order: 1 !important; }
 html[dir="ltr"] .service-detail.service-reverse .service-detail-image { order: -1 !important; }
 html[dir="ltr"] .service-detail.service-reverse .service-detail-content { order: 1 !important; }
+
+/* ENSURE: navbar-text-contrast */
+:root {
+  --nav-bg: #000000 !important;
+  --nav-text: var(--text-light, #ffffff) !important;
+}
 
 /* ENSURE: navbar-logo-isolation */
 .navbar .logo,
