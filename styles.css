@@ -73,11 +73,11 @@
   --accent: #C96B3C;
   --bg-light: #000000;
   --bg-dark: #000000;
-  --text-dark: #FFFFFF;
-  --text-light: #FFFFFF;
-  --text-muted: #CCCCCC;
-  --border-light: #666666;
-  --border-dark: #666666;
+  --text-dark: #E8E4DF;
+  --text-light: #E8E4DF;
+  --text-muted: #B8B2AB;
+  --border-light: #5e5e5e;
+  --border-dark: #5e5e5e;
   --nav-bg: transparent;
   --nav-text: #2A241F;
   --nav-text-hover: #C96B3C;
@@ -102,9 +102,9 @@
   --secondary-color: #C96B3C;
   --accent-color: #C96B3C;
   --background-color: #000000;
-  --surface-color: #111111;
-  --text-color: #FFFFFF;
-  --text-secondary-color: #CCCCCC;
+  --surface-color: #000000;
+  --text-color: #E8E4DF;
+  --text-secondary-color: #B8B2AB;
 }
 
 *, *::before, *::after {
@@ -2426,7 +2426,7 @@ main { flex: 1 0 auto; }
   font-size: 16px;
   font-weight: 400;
   line-height: 1.7;
-  color: #5A4A3A;
+  color: #C96B3C;
   margin: 0;
   font-family: 'Rubik', sans-serif;
 }
@@ -3403,24 +3403,15 @@ main { flex: 1 0 auto; }
   }
 }
 
-/* contact */
-/* ============================================
-   CONTACT SECTION — index-contact-section
-   Design: Dark warm closing area, sand form card,
-   terracotta action button, soft olive dividers
-   ============================================ */
-
 .index-contact-section {
   position: relative;
   background-color: var(--bg-dark);
-  background-image:
-    radial-gradient(ellipse at 80% 20%, rgba(111,122,82,0.15) 0%, transparent 60%),
-    radial-gradient(ellipse at 20% 80%, rgba(201,107,60,0.08) 0%, transparent 60%),
-    linear-gradient(180deg, #4A3728 0%, #2C1F10 100%);
-  color: var(--text-light);
+  background-image: none;
+  color: #E8E4DF;
   padding: var(--spacing-section, 96px) 16px;
   overflow: visible;
   direction: rtl;
+  background: #000000;
 }
 
 .index-contact-section__container {
@@ -5255,10 +5246,7 @@ div[id*="mic-access-tool-box"] button[class*="reset"] * {
   .hero h1, .hero-section h1, [class*="hero-"] h1, [class~="hero"] h1, .hero .hero-title, .hero-title { font-size: 28px !important; }
 }
 
-/* === BUTTON TEXT OVERRIDES START === */
-.navbar .nav-cta-btn,
-.nav-cta-btn { color: #FFFFFF !important; }
-/* === BUTTON TEXT OVERRIDES END === */
+
 
 
 body {
@@ -5378,7 +5366,9 @@ body {
 }
 
 .index-contact-section {
-  background: var(--background-color, var(--background, var(--bg-light, #000000))) !important;
+  background: #000000;
+  background-image: none;
+  color: #E8E4DF;
 }
 
 .index-contact-section__heading {
@@ -5410,7 +5400,9 @@ body {
 }
 
 .index-contact-section {
-  background: var(--background-color, var(--background, var(--bg-light, #000000))) !important;
+  background: #000000;
+  background-image: none;
+  color: #E8E4DF;
 }
 
 .index-hero-section {
@@ -5453,6 +5445,100 @@ body .whatsapp-float {
   visibility: hidden !important;
   opacity: 0 !important;
   pointer-events: none !important;
+}
+/* === BUTTON TEXT OVERRIDES START === */
+.navbar .nav-cta-btn,
+.nav-cta-btn { color: #FFFFFF !important; }
+/* === BUTTON TEXT OVERRIDES END === */
+
+
+.index-services-section__divider-wrapper svg path {
+  fill: var(--surface-color, var(--surface, #000000)) !important;
+}
+
+.index-process-section__divider-wrapper svg path {
+  fill: var(--surface-color, var(--surface, #000000)) !important;
+}
+
+.index-testimonials-section__divider-wrapper svg path {
+  fill: var(--surface-color, var(--surface, #000000)) !important;
+}
+
+#stats .index-stats-divider-wrapper svg path {
+  fill: var(--surface-color, var(--surface, #000000)) !important;
+}
+
+#benefits .index-benefits-divider-wrapper svg path[fill="#FAF7F3"] {
+  fill: var(--surface-color, var(--surface, #000000)) !important;
+}
+
+.index-services-section,
+.index-benefits-section,
+.index-process-section,
+.index-testimonials-section,
+.index-stats-section,
+.index-contact-section {
+  background-color: var(--surface-color, var(--surface, #000000)) !important;
+}
+
+.index-services-section__card, .index-process-section__step-card, .index-testimonials-section__card, .index-testimonials-section__card-inner, #stats .index-stat-card {
+  background-color: #0A0A0A !important;
+}
+
+.index-testimonials-section {
+  background: var(--surface-color, var(--surface, #000000)) !important;
+  color: var(--text-color, var(--text, var(--text-dark, #E8E4DF))) !important;
+}
+
+.index-process-section {
+  background: var(--surface-color, var(--surface, #000000)) !important;
+  color: var(--text-color, var(--text, var(--text-dark, #E8E4DF))) !important;
+}
+
+.index-services-section {
+  background: var(--surface-color, var(--surface, #000000)) !important;
+}
+
+.index-benefits-section {
+  background: var(--surface-color, var(--surface, #000000)) !important;
+}
+
+.index-contact-section {
+  background: var(--surface-color, var(--surface, #000000)) !important;
+}
+
+.index-testimonials-section__title,
+.index-testimonials-section__subtitle,
+.index-testimonials-section__quote p,
+.index-testimonials-section__customer-name,
+.index-testimonials-section__customer-route,
+.index-process-section__title,
+.index-process-section__subtitle,
+.index-process-section__step-title,
+.index-process-section__step-text,
+.index-process-section__note {
+  color: var(--text-color, var(--text, var(--text-dark, #E8E4DF))) !important;
+}
+
+.index-testimonials-section__customer-route,
+.index-process-section__step-text {
+  color: var(--text-secondary-color, var(--text-secondary, var(--text-muted, #B8B2AB))) !important;
+}
+
+.index-process-section .index-process-section__title {
+  color: var(--text-color, var(--text, var(--text-dark, #E8E4DF))) !important;
+}
+
+.index-process-section .index-process-section__subtitle {
+  color: var(--text-color, var(--text, var(--text-dark, #E8E4DF))) !important;
+}
+
+.index-process-section .index-process-section__step-title {
+  color: var(--text-color, var(--text, var(--text-dark, #E8E4DF))) !important;
+}
+
+.index-process-section .index-process-section__step-text {
+  color: var(--text-color, var(--text, var(--text-dark, #E8E4DF))) !important;
 }
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {

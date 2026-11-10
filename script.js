@@ -535,36 +535,7 @@ window.onload = function() {
 })();
 /* ZAPPY_CUSTOM_JS_END:b8b58e2b5e46 */
 
-/* ZAPPY_CUSTOM_JS_START:a1fc7342e949 */
-(function () {
-  function __zappyCustomInit() {
-    try {
-(function(){
-  if (document.getElementById('sticky-phone-bar')) return;
-  var bar = document.createElement('a');
-  bar.id = 'sticky-phone-bar';
-  bar.href = 'tel:0503232341';
-  bar.setAttribute('dir', 'ltr');
-  bar.innerHTML = '<svg viewBox="0 0 24 24" fill="none" style="width:22px;height:22px;flex-shrink:0"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="currentColor"/></svg><span>050-323-2341</span>';
-  document.body.appendChild(bar);
-
-  var style = document.createElement('style');
-  style.textContent = '#sticky-phone-bar{position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:99999;display:flex;align-items:center;gap:10px;background:#C96B3C;color:#fff;text-decoration:none;font-weight:800;font-size:18px;padding:12px 24px;border-radius:50px;box-shadow:0 8px 28px rgba(0,0,0,0.35);}@media(max-width:768px){#sticky-phone-bar{top:auto;bottom:16px;font-size:16px;padding:11px 20px;}}';
-  document.head.appendChild(style);
-})();
-    } catch (e) {
-      if (typeof console !== 'undefined' && console.warn) { console.warn('[zappy-custom-js]', e); }
-    }
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', __zappyCustomInit);
-  } else {
-    __zappyCustomInit();
-  }
-})();
-/* ZAPPY_CUSTOM_JS_END:a1fc7342e949 */
-
-/* ZAPPY_CUSTOM_JS_START:85c79435fb96 */
+/* ZAPPY_CUSTOM_JS_START:d1fedcb3c34f */
 (function () {
   function __zappyCustomInit() {
     try {
@@ -578,7 +549,7 @@ window.onload = function() {
   document.body.appendChild(banner);
 
   var style = document.createElement('style');
-  style.textContent = '#sticky-phone-banner{position:fixed;top:0;left:0;right:0;width:100%;z-index:99998;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;background:#C96B3C;color:#fff;text-decoration:none;padding:12px 16px;text-align:center;box-shadow:0 4px 18px rgba(0,0,0,0.3);}#sticky-phone-banner span{font-size:15px;font-weight:600;opacity:0.95;}#sticky-phone-banner strong{font-size:18px;font-weight:800;letter-spacing:0.02em;}#sticky-phone-banner:hover{background:#D87545;}@media(max-width:768px){#sticky-phone-banner{gap:8px;padding:10px 14px;}#sticky-phone-banner span{font-size:13px;}#sticky-phone-banner strong{font-size:16px;}}';
+  style.textContent = '#sticky-phone-banner{position:fixed;top:0;left:0;right:0;width:100%;z-index:99998;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;background:#000000;color:#FFFFFF;text-decoration:none;padding:14px 16px;text-align:center;border-bottom:2px solid #C96B3C;box-shadow:0 4px 18px rgba(0,0,0,0.5);}#sticky-phone-banner span{font-size:16px;font-weight:700;color:#FFFFFF;}#sticky-phone-banner strong{font-size:20px;font-weight:800;letter-spacing:0.02em;color:#C96B3C;}#sticky-phone-banner:hover{background:#111111;}@media(max-width:768px){#sticky-phone-banner{gap:8px;padding:12px 14px;}#sticky-phone-banner span{font-size:14px;}#sticky-phone-banner strong{font-size:17px;}}';
   document.head.appendChild(style);
 })();
     } catch (e) {
@@ -591,7 +562,36 @@ window.onload = function() {
     __zappyCustomInit();
   }
 })();
-/* ZAPPY_CUSTOM_JS_END:85c79435fb96 */
+/* ZAPPY_CUSTOM_JS_END:d1fedcb3c34f */
+
+/* ZAPPY_CUSTOM_JS_START:5e3de8d948f0 */
+(function () {
+  function __zappyCustomInit() {
+    try {
+(function(){
+  if (document.getElementById('sticky-phone-bar')) return;
+  var bar = document.createElement('a');
+  bar.id = 'sticky-phone-bar';
+  bar.href = 'tel:0503232341';
+  bar.setAttribute('dir', 'ltr');
+  bar.innerHTML = '<svg viewBox="0 0 24 24" fill="none" style="width:22px;height:22px;flex-shrink:0"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="currentColor"/></svg><span>050-323-2341</span>';
+  document.body.appendChild(bar);
+
+  var style = document.createElement('style');
+  style.textContent = '#sticky-phone-bar{position:fixed;top:76px;left:50%;transform:translateX(-50%);z-index:99997;display:flex;align-items:center;gap:10px;background:#000000;color:#FFFFFF;text-decoration:none;font-weight:800;font-size:18px;padding:12px 24px;border-radius:50px;border:2px solid #C96B3C;box-shadow:0 8px 28px rgba(0,0,0,0.5);}#sticky-phone-bar span{color:#C96B3C;}#sticky-phone-bar:hover{background:#111111;}@media(max-width:768px){#sticky-phone-bar{top:auto;bottom:16px;font-size:16px;padding:11px 20px;}}';
+  document.head.appendChild(style);
+})();
+    } catch (e) {
+      if (typeof console !== 'undefined' && console.warn) { console.warn('[zappy-custom-js]', e); }
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', __zappyCustomInit);
+  } else {
+    __zappyCustomInit();
+  }
+})();
+/* ZAPPY_CUSTOM_JS_END:5e3de8d948f0 */
 
 
 /* ZAPPY_PUBLISHED_LIGHTBOX_RUNTIME */
