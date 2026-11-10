@@ -5760,6 +5760,10 @@ body .top-phone-bar {
   top: auto !important;
   background-color: var(--surface-color, var(--surface, #000000)) !important;
 }
+
+nav.navbar {
+  background-color: var(--surface-color, var(--surface, #000000)) !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
