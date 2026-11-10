@@ -5545,6 +5545,14 @@ body .whatsapp-float {
   background: var(--surface-color, var(--surface, #000000)) !important;
   border-color: #444444 !important;
 }
+
+.index-hero-section__bg-image {
+  display: block !important;
+}
+
+.index-hero-section__scrim {
+  background-image: linear-gradient(180deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.4) 45%, rgba(0,0,0,0.25) 70%, rgba(0,0,0,0.55) 100%) !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
