@@ -5799,6 +5799,56 @@ nav.navbar {
   padding: 0 !important;
   color: #FFFFFF !important;
 }
+
+body .zappy-whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #25D366;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 14px 22px;
+  border-radius: 50px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  box-shadow: 0 8px 26px rgba(37, 211, 102, 0.45), 0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body .zappy-whatsapp-float svg {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  fill: #ffffff;
+}
+
+body .zappy-whatsapp-float:hover {
+  transform: translateY(-4px);
+  background: #1ebe57;
+  box-shadow: 0 12px 34px rgba(37, 211, 102, 0.55), 0 4px 10px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+body .zappy-whatsapp-float {
+  bottom: 18px;
+  left: 18px;
+  right: 18px;
+  justify-content: center;
+  padding: 16px 22px;
+  border-radius: 50px;
+}
+
+body .zappy-whatsapp-float svg {
+  width: 24px;
+  height: 24px;
+}
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
