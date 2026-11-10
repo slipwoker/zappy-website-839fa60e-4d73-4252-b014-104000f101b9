@@ -5540,6 +5540,11 @@ body .whatsapp-float {
 .index-process-section .index-process-section__step-text {
   color: var(--text-color, var(--text, var(--text-dark, #E8E4DF))) !important;
 }
+
+.index-process-section__note {
+  background: var(--surface-color, var(--surface, #000000)) !important;
+  border-color: #444444 !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
