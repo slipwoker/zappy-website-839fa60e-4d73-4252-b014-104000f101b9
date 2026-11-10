@@ -5447,6 +5447,13 @@ body {
 .index-process-section__divider-wrapper path, .index-testimonials-section__divider-wrapper path, #benefits .index-benefits-divider-wrapper path {
   fill: var(--background-color, var(--background, var(--bg-light, #000000))) !important;
 }
+
+body .whatsapp-float {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
