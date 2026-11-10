@@ -593,6 +593,44 @@ window.onload = function() {
 })();
 /* ZAPPY_CUSTOM_JS_END:5e3de8d948f0 */
 
+/* ZAPPY_CUSTOM_JS_START:1550e2ab8113 */
+(function () {
+  function __zappyCustomInit() {
+    try {
+(function () {
+  function fixNavbar() {
+    var nav = document.querySelector('nav.navbar');
+    if (!nav) return;
+    nav.style.setProperty('position', 'relative', 'important');
+    nav.style.setProperty('top', 'auto', 'important');
+    nav.style.setProperty('background-color', '#000000', 'important');
+    nav.style.setProperty('backdrop-filter', 'none', 'important');
+    nav.style.setProperty('box-shadow', 'none', 'important');
+  }
+  window.addEventListener('load', function () { fixNavbar(); });
+  // keep watching for up to 5 seconds in case the runtime script re-writes styles
+  var attempts = 0;
+  var timer = setInterval(function () {
+    fixNavbar();
+    attempts++;
+    var nav = document.querySelector('nav.navbar');
+    if (attempts >= 25 || (nav && nav.style.position === 'relative')) {
+      if (nav && nav.style.position === 'relative') clearInterval(timer);
+    }
+  }, 200);
+})();
+    } catch (e) {
+      if (typeof console !== 'undefined' && console.warn) { console.warn('[zappy-custom-js]', e); }
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', __zappyCustomInit);
+  } else {
+    __zappyCustomInit();
+  }
+})();
+/* ZAPPY_CUSTOM_JS_END:1550e2ab8113 */
+
 
 /* ZAPPY_PUBLISHED_LIGHTBOX_RUNTIME */
 (function(){
