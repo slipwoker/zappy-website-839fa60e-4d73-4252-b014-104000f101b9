@@ -507,6 +507,34 @@ window.onload = function() {
     }
 })();
 
+/* ZAPPY_CUSTOM_JS_START:b8b58e2b5e46 */
+(function () {
+  function __zappyCustomInit() {
+    try {
+(function () {
+  function removeWhatsappFloat() {
+    var el = document.querySelector('a.whatsapp-float');
+    if (el) { el.remove(); }
+  }
+  removeWhatsappFloat();
+  // גם אם הסקריפט שמזריק אותו ירוץ אחר כך, נסיר שוב
+  var observer = new MutationObserver(function () {
+    removeWhatsappFloat();
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+})();
+    } catch (e) {
+      if (typeof console !== 'undefined' && console.warn) { console.warn('[zappy-custom-js]', e); }
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', __zappyCustomInit);
+  } else {
+    __zappyCustomInit();
+  }
+})();
+/* ZAPPY_CUSTOM_JS_END:b8b58e2b5e46 */
+
 
 /* ZAPPY_PUBLISHED_LIGHTBOX_RUNTIME */
 (function(){
