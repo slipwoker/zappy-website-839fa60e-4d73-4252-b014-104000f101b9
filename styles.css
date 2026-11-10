@@ -5764,6 +5764,41 @@ body .top-phone-bar {
 nav.navbar {
   background-color: var(--surface-color, var(--surface, #000000)) !important;
 }
+
+#services #sticky-phone-bar {
+  position: fixed !important;
+  bottom: 24px !important;
+  left: 24px !important;
+  right: auto !important;
+  z-index: 100000 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  background: var(--accent-color, var(--accent, #C96B3C)) !important;
+  color: #FFFFFF !important;
+  padding: 16px 22px !important;
+  border-radius: 50px !important;
+  text-decoration: none !important;
+  font-weight: 800 !important;
+  font-size: 18px !important;
+  box-shadow: 0 8px 28px rgba(201, 107, 60, 0.45) !important;
+  line-height: 1 !important;
+  width: auto !important;
+  white-space: nowrap !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+#sticky-phone-bar svg {
+  width: 24px !important;
+  height: 24px !important;
+  flex-shrink: 0 !important;
+}
+
+#sticky-phone-bar p {
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #FFFFFF !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
