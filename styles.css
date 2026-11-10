@@ -5748,6 +5748,18 @@ body .top-phone-link {
   font-size: 1.2rem;
 }
 }
+
+nav.navbar {
+  position: relative !important;
+  top: auto !important;
+  background-color: var(--surface-color, var(--surface, #000000)) !important;
+}
+
+body .top-phone-bar {
+  position: relative !important;
+  top: auto !important;
+  background-color: var(--surface-color, var(--surface, #000000)) !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
