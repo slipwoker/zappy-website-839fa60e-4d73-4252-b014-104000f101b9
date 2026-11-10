@@ -230,6 +230,9 @@
   var ECOM_MODE = "";
   var IS_CATALOG = false;
   var IS_FULL = false;
+  var DIRECT_GA = false;
+  var DIRECT_META = false;
+  var GA_SEND_TO = "";
 
   var ECOM_ALIAS = {
     begin_checkout: 'checkout_started',
@@ -475,16 +478,18 @@
   }
   window.zappyFlushPendingMetaEvents = flushPendingMetaEvents;
 
-  var metaFlushAttempts = 0;
-  var metaFlushTimer = setInterval(function() {
-    metaFlushAttempts++;
-    flushPendingMetaEvents();
-    var pendingLen = 0;
-    try { pendingLen = (window.__zappyPendingMetaEvents || []).length; } catch (e) {}
-    if ((pendingLen === 0 && typeof window.fbq === 'function') || metaFlushAttempts > 60) {
-      clearInterval(metaFlushTimer);
-    }
-  }, 500);
+  if (DIRECT_META) {
+    var metaFlushAttempts = 0;
+    var metaFlushTimer = setInterval(function() {
+      metaFlushAttempts++;
+      flushPendingMetaEvents();
+      var pendingLen = 0;
+      try { pendingLen = (window.__zappyPendingMetaEvents || []).length; } catch (e) {}
+      if ((pendingLen === 0 && typeof window.fbq === 'function') || metaFlushAttempts > 60) {
+        clearInterval(metaFlushTimer);
+      }
+    }, 500);
+  }
 
   /**
    * Fire a marketing event to first-party analytics + GA4/GTM/Meta when present.
@@ -524,7 +529,9 @@
         } catch (e1) {}
       }
 
-      // GTM / dataLayer — platform-standard ecommerce event names
+      // GTM / dataLayer — platform-standard ecommerce event names.
+      // Always push. A bare gtag.js snippet ignores plain event objects;
+      // a GTM container is what turns them into GA4/Ads hits.
       if (!purchaseAlreadySent) {
         try {
           window.dataLayer = window.dataLayer || [];
@@ -535,9 +542,12 @@
             if (ga4ForGtm.value != null) ecommerce.value = ga4ForGtm.value;
             if (ga4ForGtm.currency) ecommerce.currency = ga4ForGtm.currency;
             if (ga4ForGtm.items) ecommerce.items = ga4ForGtm.items;
+            // Clear first so GTM does not merge this hit with the previous ecommerce object.
+            window.dataLayer.push({ ecommerce: null });
             window.dataLayer.push({ event: plat.gtm, ecommerce: ecommerce });
             // Secondary Zappy-specific trigger for merchants who want it
             if (eventId === 'checkout_complete' || eventId === 'checkout_started') {
+              window.dataLayer.push({ ecommerce: null });
               window.dataLayer.push({ event: eventId, ecommerce: ecommerce });
             }
           } else {
@@ -549,31 +559,49 @@
           }
         } catch (e2) {}
 
-        // GA4 gtag
-        try {
-          if (typeof window.gtag === 'function') {
-            window.gtag('event', plat.ga4, buildGa4Params(eventId, metadata));
-          }
-        } catch (e3) {}
+        // Direct Google Analytics snippet only. GTM also defines window.gtag;
+        // calling it then sends the same event again to every Google tag the
+        // container loaded. send_to keeps a direct GA install off those tags
+        // when the merchant also has GTM.
+        if (DIRECT_GA) {
+          try {
+            if (typeof window.gtag === 'function') {
+              var gaParams = buildGa4Params(eventId, metadata);
+              if (GA_SEND_TO && gaParams && typeof gaParams === 'object') {
+                var gaCopy = {};
+                for (var gk in gaParams) {
+                  if (Object.prototype.hasOwnProperty.call(gaParams, gk)) gaCopy[gk] = gaParams[gk];
+                }
+                gaCopy.send_to = GA_SEND_TO;
+                gaParams = gaCopy;
+              }
+              window.gtag('event', plat.ga4, gaParams);
+            }
+          } catch (e3) {}
+        }
 
         if (oid) markPurchaseFired(oid);
       }
 
-      // Meta Pixel — live sites lazy-load fbq after marketing consent. If the
-      // stub is not defined yet, queue and flush when the pixel arrives.
-      try {
-        if (purchaseMetaAlreadySent) {
-          // already delivered to Meta
-        } else {
-          var metaParams = buildMetaParams(eventId, metadata);
-          if (typeof window.fbq === 'function') {
-            window.fbq('track', plat.meta, metaParams);
-            if (oid) markPurchaseMetaFired(oid);
+      // Meta Pixel — only the Zappy pixel integration. A pixel pasted inside
+      // GTM already initializes fbq; calling it from here would double-count.
+      // Live sites lazy-load fbq after marketing consent. If the stub is not
+      // defined yet, queue and flush when the pixel arrives.
+      if (DIRECT_META) {
+        try {
+          if (purchaseMetaAlreadySent) {
+            // already delivered to Meta
           } else {
-            enqueueMetaEvent(plat.meta, metaParams, eventId === 'checkout_complete' ? oid : null);
+            var metaParams = buildMetaParams(eventId, metadata);
+            if (typeof window.fbq === 'function') {
+              window.fbq('track', plat.meta, metaParams);
+              if (oid) markPurchaseMetaFired(oid);
+            } else {
+              enqueueMetaEvent(plat.meta, metaParams, eventId === 'checkout_complete' ? oid : null);
+            }
           }
-        }
-      } catch (e4) {}
+        } catch (e4) {}
+      }
     } catch (err) {}
   };
 
@@ -752,6 +780,315 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KP28756L"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ZAPPY_INTEGRATION_END analytics:add_google_tag_manager -->
+<style data-zappy-section-v2-css="true">
+/* V2 Regenerated Section CSS */
+.index-hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  padding: 140px 20px 80px;
+  isolation: isolate;
+}
+
+.index-hero-section__bg-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: var(--bg-dark);
+}
+
+.index-hero-section__bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.index-hero-section__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 15% 80%, rgba(0,0,0,0.52) 0%, rgba(0,0,0,0.28) 45%, rgba(0,0,0,0.08) 70%, rgba(0,0,0,0.02) 100%),
+    linear-gradient(180deg, rgba(42,36,31,0.55) 0%, rgba(42,36,31,0.15) 30%, rgba(42,36,31,0.05) 60%, rgba(42,36,31,0.35) 100%);
+}
+
+.index-hero-section__content {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  text-align: right;
+  padding-inline-start: clamp(0px, 5vw, 40px);
+}
+
+.index-hero-section__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(246, 239, 227, 0.12);
+  border: 1px solid rgba(246, 239, 227, 0.25);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 100px;
+  padding: 8px 18px;
+  margin-bottom: 24px;
+  color: var(--text-light);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+
+.index-hero-section__badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px rgba(201, 107, 60, 0.8);
+  flex-shrink: 0;
+}
+
+.index-hero-section__title {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  color: var(--text-light);
+  margin: 0 0 16px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.45), 0 1px 3px rgba(0,0,0,0.5);
+  max-width: 700px;
+}
+
+.index-hero-section__subtitle {
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--text-light);
+  margin: 0 0 40px;
+  max-width: 560px;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+  opacity: 0.92;
+}
+
+.index-hero-section__phone-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  background: rgba(42, 36, 31, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(246, 239, 227, 0.2);
+  border-radius: 24px;
+  padding: 20px 24px;
+  margin-bottom: 40px;
+  max-width: 600px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+}
+
+.index-hero-section__phone-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 8px 20px rgba(201, 107, 60, 0.4);
+}
+
+.index-hero-section__phone-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.index-hero-section__phone-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1 1 auto;
+  min-width: 180px;
+}
+
+.index-hero-section__phone-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  opacity: 0.7;
+}
+
+.index-hero-section__phone-number {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--text-light);
+  text-decoration: none;
+  line-height: 1.1;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  transition: color 0.25s ease;
+}
+
+.index-hero-section__phone-number:hover {
+  color: var(--accent);
+}
+
+.index-hero-section__call-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--accent);
+  color: #FFFFFF;
+  padding: 16px 28px;
+  border-radius: 50px;
+  border: none;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 24px rgba(201, 107, 60, 0.35);
+  flex-shrink: 0;
+}
+
+.index-hero-section__call-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.index-hero-section__call-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(201, 107, 60, 0.5);
+  background: #D87545;
+}
+
+.index-hero-section__trust-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  max-width: 600px;
+}
+
+.index-hero-section__trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-light);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+  flex-direction: row;
+}
+
+.index-hero-section__trust-item svg {
+  width: 20px;
+  height: 20px;
+  color: var(--accent);
+  flex-shrink: 0;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.4));
+}
+
+.index-hero-section__trust-item span {
+  color: inherit;
+}
+
+@media (max-width: 768px) {
+  .index-hero-section {
+    padding: 120px 16px 60px;
+    min-height: 100dvh;
+    justify-content: center;
+  }
+
+  .index-hero-section__content {
+    padding-inline-start: 0;
+    text-align: center;
+  }
+
+  .index-hero-section__title {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    max-width: none;
+  }
+
+  .index-hero-section__subtitle {
+    font-size: 1.1rem;
+    margin: 0 auto 32px;
+    max-width: 420px;
+  }
+
+  .index-hero-section__badge {
+    margin-bottom: 20px;
+    font-size: 0.8rem;
+  }
+
+  .index-hero-section__phone-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+    padding: 24px 20px;
+    margin: 0 auto 32px;
+    max-width: 400px;
+  }
+
+  .index-hero-section__phone-info {
+    align-items: center;
+  }
+
+  .index-hero-section__phone-number {
+    font-size: 1.8rem;
+  }
+
+  .index-hero-section__call-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .index-hero-section__trust-list {
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .index-hero-section__trust-item {
+    font-size: 0.85rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .index-hero-section__title {
+    font-size: 2.6rem;
+  }
+
+  .index-hero-section__phone-number {
+    font-size: 2rem;
+  }
+}
+/* ZAPPY_POSTGEN_GUARD_HERO_FONT_CAP:index-hero */
+.hero h1, .hero-section h1, [class*="hero-"] h1, [class~="hero"] h1, .hero .hero-title, .hero-title { font-size: 48px !important; line-height: 1.2 !important; }
+@media (max-width: 1024px) {
+  .hero h1, .hero-section h1, [class*="hero-"] h1, [class~="hero"] h1, .hero .hero-title, .hero-title { font-size: 36px !important; }
+}
+@media (max-width: 768px) {
+  .hero h1, .hero-section h1, [class*="hero-"] h1, [class~="hero"] h1, .hero .hero-title, .hero-title { font-size: 28px !important; }
+}
+
+</style>
     <style id="zappy-critical-above-fold-css">
 html{box-sizing:border-box;-webkit-text-size-adjust:100%}*,*::before,*::after{box-sizing:inherit}body{margin:0;min-width:320px;overflow-x:clip}img,svg,video{max-width:100%;height:auto}main{display:block}.container{width:min(100% - 32px,1200px);margin-inline:auto}.navbar,nav.navbar,header .navbar,header[role="banner"]{position:relative;z-index:1000;width:100%}.nav-container,.navbar .container{display:flex;align-items:center;justify-content:space-between;min-height:64px}.logo,.logo-link img{display:block;width:35px;height:35px;object-fit:contain}.nav-menu,#navMenu{list-style:none;margin:0;padding:0}.navbar a,.nav-menu a,#navMenu a,.navbar .nav-links a{color:inherit;text-decoration:none}.navbar .sub-menu,.nav-menu .sub-menu,#navMenu .sub-menu{display:none}.fa,.fas,.far,.fab,.fa-solid,.fa-regular,.fa-brands{display:inline-block;min-width:1em;text-align:center}html:not(#zappy-noop)[data-zappy-site-type="ecommerce"] .phone-header-btn,html:not(#zappy-noop) .navbar:has(.nav-ecommerce-icons)>.phone-header-btn{display:none!important;visibility:hidden!important;width:0!important;height:0!important;pointer-events:none!important}.zappy-preview-empty-store-cta{display:none!important;visibility:hidden!important;height:0!important;max-height:0!important;overflow:hidden!important;margin:0!important;padding:0!important;border:0!important;box-shadow:none!important}.zappy-catalog-menu{background:var(--surface-color,var(--surface,linear-gradient(135deg,#f8f9fa 0%,#fff 100%)));border-bottom:1px solid var(--border-color,#e5e7eb);padding:0;position:sticky;top:0;z-index:90}.zappy-catalog-menu[dir=rtl],.zappy-catalog-menu.rtl{direction:rtl}.zappy-catalog-menu[dir=ltr],.zappy-catalog-menu.ltr{direction:ltr}.catalog-menu-container{max-width:1440px;margin:0 auto;display:flex;align-items:center;gap:8px;padding:10px 24px;overflow:visible}.catalog-menu-categories,.catalog-menu-list{display:flex;align-items:center;gap:4px;flex-wrap:wrap;margin:0;padding:0;list-style:none}.catalog-menu-item{display:inline-flex;align-items:center;padding:8px 16px;font-size:14px;font-weight:500;color:var(--text-color,var(--text,#374151));text-decoration:none;border-radius:20px;white-space:nowrap}.catalog-menu-all{background:var(--primary-color,var(--primary,#111));color:var(--text-light,#fff)!important}.catalog-menu-parent{position:relative;display:inline-flex;align-items:center}.catalog-menu-trigger{display:inline-flex;align-items:center;gap:6px}.catalog-menu-chevron{flex-shrink:0}.catalog-menu-parent>.sub-menu{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important}.hero-section,.index-hero-section,section[class*="hero"]{position:relative;overflow:hidden}.hero-section,.index-hero-section{min-height:560px}section[data-hero-type*="fullscreen"]{min-height:100vh}.hero-bg-wrapper,.hero-bg-image,section[class*="hero"] [class*="hero-bg"]{position:absolute;inset:0;width:100%;height:100%}.hero-bg-wrapper img,.hero-bg-image img,section[class*="hero"] [data-hero-bg],section[class*="hero"] img[data-hero-background="true"]{width:100%!important;height:100%!important;object-fit:cover!important;display:block}.hero-content,section[class*="hero"] .container{position:relative;z-index:2}@media(max-width:768px){:root{--header-height:72px;--total-header-height:72px;--zappy-mobile-menu-top:72px}html[data-zappy-site-type="ecommerce"] body{padding-top:var(--total-header-height,72px)}html[data-zappy-site-type="ecommerce"] body>nav.navbar,html[data-zappy-site-type="ecommerce"] body>.navbar:not(.zappy-catalog-menu){position:fixed!important;top:0;left:0;right:0;z-index:100000;width:100%;margin-bottom:0}.zappy-catalog-menu{position:fixed;top:var(--header-height,72px);left:0;right:0;z-index:99999}.nav-container,.navbar .container{min-height:60px}.nav-menu,#navMenu{max-width:100vw;overflow-x:hidden}.hero-section,.index-hero-section,section[class*="hero"],section[data-hero-type*="fullscreen"]{min-height:100svh}.hero-bg-wrapper,.hero-bg-image,.hero-scrim{min-height:100svh}}
 
@@ -813,7 +1150,7 @@ body:has(.zappy-announcement-bar) main > section[class*="hero"]:first-of-type {
 </style>
     <link rel="stylesheet" href="/styles.css">
     <script>window.ZAPPY_WEBSITE_ID = "839fa60e-4d73-4252-b014-104000f101b9"; window.ZAPPY_API_BASE = "https://api.zappy5.com";</script>
-    <link rel="preload" as="image" href="/assets/site-index-hero-image-1.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="/assets/image-mobile-tire-repair-service-section-hero-index-hero-image-1.webp" fetchpriority="high">
 
     <style id="zappy-dropdown-submenu-styles">
       /* ========== DESKTOP DROPDOWN SUBMENU STYLES ========== */
@@ -1386,38 +1723,60 @@ body:has(.zappy-announcement-bar) main > section[class*="hero"]:first-of-type {
 </script>
   
   <main id="main">
-    <section data-band-index="0" id="hero" class="index-hero-section" data-layout-spec="בית-hero" data-hero-treatment="fade-bleed" style="--hero-fade-color: var(--bg-light);" data-hero-type="fullscreen-scrim">
-  <img loading="eager" fetchpriority="high" class="hero-fade-img" data-hero-bg="true" data-placeholder="index-hero-image-1" data-context="A daylight roadside scene in Israel: a friendly male mobile tire technician in a branded uniform kneels beside a punctured car tire on the highway shoulder, examining it with a calm and reassuring expression. Behind him, a branded service van with hazard lights flashing is parked safely on the shoulder. The scene is bathed in warm natural sunlight, with the open road and soft landscape stretching into the background. The technician and van are positioned on the far left side of the frame, leaving the right side of the image open for a gradient fade. The overall mood is calm, professional, and reassuring." width="1200" height="600" src="/assets/site-index-hero-image-1.webp" alt="טכנאי צמיגים נייד מעניק סיוע בכביש" decoding="async">
+    <section class="index-hero-section" data-layout-spec="בית-hero" data-hero-type="fullscreen-card" id="hero">
+  <div class="index-hero-section__bg-wrapper" aria-hidden="true">
+    <img loading="eager" fetchpriority="high" data-hero-bg="true" data-context="A warm, cinematic roadside scene at golden hour. A friendly mobile tire repair technician in a dark olive work uniform kneels beside a car with a flat tire on a quiet Israeli highway shoulder. His service van with warm amber hazard lights is parked behind. Soft bokeh of distant traffic lights, warm cream and brown tones, reassuring human presence, no text, high resolution." width="1600" height="900" src="/assets/image-mobile-tire-repair-service-section-hero-index-hero-image-1.webp" alt="טכנאי שירות צמיגים נייד מחליף פנצ'ר בכביש בשעת ערב" class="index-hero-section__bg-image" decoding="async">
+  </div>
+  <div class="index-hero-section__scrim" aria-hidden="true"></div>
 
-  <div class="hero-fade-content">
-    <p class="hero-eyebrow">צמיגי בועז בעמ</p>
-    <h1 class="display-xl">עזרה בדרך,<br>בדיוק כשצריך</h1>
-    <h3 class="hero-subtitle">שירות פנצ'ריה ניידת 24/7 באזור המרכז — תיקון פנצ'רים, החלפת גלגל וסיוע בכביש. מגיעים אליכם לכל מקום במרכז, בכל שעה.</h3>
-
-    <div class="hero-cta-row">
-      
-      
+  <div class="index-hero-section__content">
+    <div class="index-hero-section__badge">
+      <span class="index-hero-section__badge-dot"></span>
+      <span>שירות צמיגים נייד 24/7</span>
     </div>
 
-    <div class="hero-trust-line"><div class="trust-item">
-<i class="fas fa-bolt"></i>
-<span>הגעה עד 30 דקות</span>
-</div>
-<div class="trust-item">
-<i class="fas fa-tools"></i>
-<span>שירות דרך מקצועי</span>
-</div>
-<div class="trust-item">
-<i class="fas fa-hand-holding-heart"></i>
-<span>סיוע אנושי ואכפתי</span>
-</div></div>
-  </div>
+    <h1 class="index-hero-section__title">תקוע בצד הדרך?<br>אנחנו כבר בדרך אליך.</h1>
 
-  <div class="index-hero-divider-wrapper">
-    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,80 L0,20 Q100,10 200,25 T400,15 Q500,20 600,12 T800,18 Q900,22 1000,14 T1200,20 L1200,80 Z" fill="var(--bg-light)"></path>
-      <path d="M0,80 L0,28 Q100,18 200,33 T400,23 Q500,28 600,20 T800,26 Q900,30 1000,22 T1200,28" fill="var(--bg-light)" stroke="var(--accent)" stroke-width="2" stroke-dasharray="8 8" opacity="0.6"></path>
-    </svg>
+    <h3 class="index-hero-section__subtitle">צמיגי בועז בעמ – תיקון פנצ'רים והחלפת גלגל במקום, במהירות ובאמינות מלאה. מגיעים לכל מקום בארץ.</h3>
+
+    <div class="index-hero-section__phone-card">
+      <div class="index-hero-section__phone-icon" aria-hidden="true">
+        <svg data-element-type="icon" data-icon-type="svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </div>
+      <div class="index-hero-section__phone-info">
+        <span class="index-hero-section__phone-label">חיוג ישיר למוקד</span>
+        <a href="tel:0503232341" class="index-hero-section__phone-number" dir="ltr">050-323-2341</a>
+      </div>
+      <a href="tel:0503232341" class="index-hero-section__call-btn">
+        <svg data-element-type="icon" data-icon-type="svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        התקשר עכשיו
+      </a>
+    </div>
+
+    <ul class="index-hero-section__trust-list" aria-label="יתרונות השירות">
+      <li class="index-hero-section__trust-item">
+        <svg data-element-type="icon" data-icon-type="svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        <span>הגעה מהירה לכל מקום</span>
+      </li>
+      <li class="index-hero-section__trust-item">
+        <svg data-element-type="icon" data-icon-type="svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        <span>טכנאים מוסמכים ומקצועיים</span>
+      </li>
+      <li class="index-hero-section__trust-item">
+        <svg data-element-type="icon" data-icon-type="svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        <span>זמינות 24/7 כולל סופי שבוע</span>
+      </li>
+    </ul>
   </div>
 </section>
 
