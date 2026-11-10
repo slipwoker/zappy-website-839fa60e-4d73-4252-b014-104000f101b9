@@ -37,18 +37,6 @@ Information about WCAG compliance and accessibility features.
 - Phone (tel): tel:0503232341
 - Address: ישראל וישנגרד 7 , בת ים, ישראל, ישראל
 
-### Contact form
-- URL: https://tzmagei-boaz-ltd.zappy5.app
-- Endpoint: https://tzmagei-boaz-ltd.zappy5.app/api/email/contact-form
-- Method: POST
-- Content-Type: application/json
-- Fields:
-  - `name` (text, required)
-  - `email` (email, required)
-  - `phone` (tel, required)
-  - `message` (textarea, required)
-  - `privacy_consent` (checkbox, required)
-
 ---
 
 # Business Context (for LLM understanding)

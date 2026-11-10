@@ -3417,14 +3417,16 @@ main { flex: 1 0 auto; }
 }
 
 .index-contact-section__container {
-  max-width: 1200px;
+  max-width: 640px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: var(--spacing-card-gap, 24px);
   align-items: start;
   position: relative;
   z-index: 1;
+  text-align: center;
+  justify-items: center;
 }
 
 /* ── Text Column (right side in RTL) ── */
